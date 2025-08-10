@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velvyna - Your Style Destination</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Font Awesome for social media icons if needed -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="main-header">
+      <div class="container nav-container">
+        <a
+          href="#home"
+          class="logo"
+          style="display: flex; align-items: center; text-decoration: none"
+        >
+          <img
+            src="images\logoFinal.png"
+            alt="Velvyna Logo"
+            style="height: 90px; margin-top: -15px; margin-bottom: -15px"
+          />
+          <span
+            style="
+              font-size: 2.6rem;
+              font-weight: bold;
+              color: inherit;
+              margin-left: 10px;
+            "
+            >Velvyna</span
+          >
+        </a>
+        <!-- <a href="#home" class="logo">Velvyna</a> -->
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#cart">🛒 Cart</a></li>
+            <li class="profile-link hidden">
+              <a href="#profile">👤 Profile</a>
+            </li>
+            <!-- IMPORTANT: Ensure these two admin links have the 'admin-link hidden' classes -->
+            <li class="admin-link hidden">
+              <a href="#admin-products">⚙️ Admin Products</a>
+            </li>
+            <li class="admin-link hidden">
+              <a href="#admin-orders">📦 Admin Orders</a>
+            </li>
+            <!-- Info dropdown container -->
+            <li class="dropdown">
+              <a href="#" class="dropbtn">Info ▼</a>
+              <div class="dropdown-content">
+                <a href="#contact-us">Contact Us</a>
+                <a href="#privacy-policy">Privacy Policy</a>
+                <a href="#refund-policy">Refund Policy</a>
+                <a href="#shipping-policy">Shipping Policy</a>
+              </div>
+            </li>
+            <li><a href="#auth" id="auth-link">Login / Register</a></li>
+            <li>
+              <button id="logout-button" class="logout-btn hidden">
+                Logout
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="app" class="container app-container">
+      <!-- Page content will be dynamically shown/hidden here by app.js -->
+
+      <!-- Home Page Section -->
+      <section id="home-page" class="page active">
+        <div class="hero-section">
+          <h1>Welcome to Velvyna!</h1>
+          <p class="page-description">
+            Discover the latest trends in fashion and home decor.
+          </p>
+        </div>
+        <div id="featured-products-section">
+          <h2>Featured Products</h2>
+          <div id="featured-products-container" class="products-grid">
+            <!-- Products loaded by home.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Page Section -->
+      <section id="products-page" class="page">
+        <h1 class="page-title">Our Products</h1>
+        <div class="page-description">
+          Find the perfect items for your style.
+        </div>
+        <div class="products-page-layout">
+          <aside id="filters" class="filters-sidebar">
+            <div class="filter-group">
+              <label for="category-filter">Category</label>
+              <select id="category-filter">
+                <option value="">All Categories</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="price-range">Price Range</label>
+              <input
+                type="range"
+                id="price-range"
+                min="0"
+                max="5000"
+                value="5000"
+              />
+              <p>Up to ₹<span id="price-display">5000</span></p>
+            </div>
+            <button id="apply-filters">Apply Filters</button>
+            <div class="filter-group">
+              <input
+                type="text"
+                id="product-search"
+                placeholder="Search products..."
+              />
+            </div>
+          </aside>
+          <main id="product-list" class="products-grid">
+            <!-- Products loaded by products.js -->
+          </main>
+        </div>
+      </section>
+
+      <!-- Product Detail Page Section -->
+      <section id="product-detail-page" class="page">
+        <div id="product-details-container" class="product-detail-layout">
+          <div class="product-large-image-container">
+            <img
+              id="product-image"
+              src="https://placehold.co/600x600/eeeeee/222222?text=Product"
+              alt="Product Image"
+              class="product-main-image"
+            />
+            <div
+              id="additional-images-thumbnails"
+              class="additional-images-thumbnails-container"
+            >
+              <!-- Additional image thumbnails will be loaded here by productDetail.js -->
+            </div>
+          </div>
+          <div class="product-info-container">
+            <h1 id="product-name">Product Name</h1>
+            <p class="product-price" id="product-price">₹0.00</p>
+            <p id="product-description">Product Description goes here.</p>
+            <div class="product-options">
+              <div class="product-option-group">
+                <label for="size-select">Size:</label>
+                <select id="size-select" class="select-input"></select>
+              </div>
+              <div class="product-option-group">
+                <label>Color:</label>
+                <div id="color-variants" class="color-variants-container">
+                  <!-- Color swatches loaded by productDetail.js -->
+                </div>
+              </div>
+            </div>
+            <div class="product-action-group">
+              <input
+                type="number"
+                id="quantity-input"
+                value="1"
+                min="1"
+                class="quantity-input"
+              />
+              <button id="add-to-cart-btn" class="cta-button">
+                Add to Cart
+              </button>
+              <button id="buy-now-btn" class="secondary-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cart Page Section -->
+      <section id="cart-page" class="page">
+        <h1 class="page-title">Your Shopping Cart</h1>
+        <div id="cart-items" class="cart-items-container">
+          <!-- Cart items loaded by cart.js -->
+        </div>
+        <div class="cart-summary">
+          <h2 class="cart-total">
+            Total: <span id="cart-total-amount">₹0.00</span>
+          </h2>
+          <button id="checkout-button" class="cta-button">
+            Proceed to Checkout
+          </button>
+        </div>
+      </section>
+
+      <!-- Profile Page Section -->
+      <section id="profile-page" class="page">
+        <h1 class="page-title">Your Profile</h1>
+        <div class="profile-details-container" id="profile-details-container">
+          <p>Name: <span id="profile-name"></span></p>
+          <p>Email: <span id="profile-email"></span></p>
+          <button id="edit-profile-button" class="secondary-button">
+            Edit Profile
+          </button>
+        </div>
+        <div class="edit-profile-form-container hidden" id="edit-profile-form">
+          <h2>Edit Profile</h2>
+          <div class="form-group">
+            <label for="edit-name">Name</label>
+            <input type="text" id="edit-name" placeholder="Enter name" />
+          </div>
+          <div class="form-group">
+            <label for="edit-email">Email Address</label>
+            <input type="email" id="edit-email" placeholder="Enter email" />
+          </div>
+          <div class="form-group">
+            <label for="edit-password">New Password</label>
+            <input
+              type="password"
+              id="edit-password"
+              placeholder="Enter new password (optional)"
+            />
+          </div>
+          <div class="form-actions">
+            <button id="save-profile-button" class="cta-button">
+              Save Changes
+            </button>
+            <button id="cancel-edit-button" class="secondary-button">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Auth Page Section (Login/Register) -->
+      <section id="auth-page" class="page">
+        <div class="auth-card">
+          <h2 class="auth-toggle-heading">Login</h2>
+          <form id="login-form" class="auth-form">
+            <div class="form-group">
+              <label for="login-email">Email Address</label>
+              <input type="email" id="login-email" placeholder="Enter email" />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input
+                type="password"
+                id="login-password"
+                placeholder="Enter password"
+              />
+            </div>
+            <button type="button" id="login-button" class="cta-button">
+              Login
+            </button>
+          </form>
+          <p class="auth-toggle-text">
+            <a href="#" id="show-register" class="auth-toggle-link"
+              >Need an account? Register here</a
+            >
+          </p>
+
+          <h2 class="auth-toggle-heading hidden">Register</h2>
+          <form id="register-form" class="auth-form hidden">
+            <div class="form-group">
+              <label for="register-name">Name</label>
+              <input type="text" id="register-name" placeholder="Enter name" />
+            </div>
+            <div class="form-group">
+              <label for="register-email">Email Address</label>
+              <input
+                type="email"
+                id="register-email"
+                placeholder="Enter email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="register-password">Password</label>
+              <input
+                type="password"
+                id="register-password"
+                placeholder="Enter password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="register-confirm-password">Confirm Password</label>
+              <input
+                type="password"
+                id="register-confirm-password"
+                placeholder="Confirm password"
+              />
+            </div>
+            <button type="button" id="register-button" class="cta-button">
+              Register
+            </button>
+          </form>
+          <p class="auth-toggle-text hidden">
+            <a href="#" id="show-login" class="auth-toggle-link"
+              >Already have an account? Login here</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- Checkout Details Page Section -->
+      <section id="checkout-details-page" class="page">
+        <h1 class="page-title">Shipping & Delivery Details</h1>
+        <div class="page-description">
+          Please provide your shipping and delivery preferences.
+        </div>
+
+        <div class="form-card">
+          <form id="shipping-details-form" class="auth-form">
+            <h2 class="form-section-title">Recipient Information</h2>
+            <div class="form-group">
+              <label for="recipient-name">Recipient Name</label>
+              <input
+                type="text"
+                id="recipient-name"
+                placeholder="Enter recipient's full name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone-number">Phone Number</label>
+              <input
+                type="tel"
+                id="phone-number"
+                placeholder="Enter phone number"
+                required
+                pattern="[0-9]{10,15}"
+                title="Phone number must be 10-15 digits"
+              />
+            </div>
+
+            <h2 class="form-section-title">Shipping Address</h2>
+            <div class="form-group">
+              <label for="address">Address (Street, Area)</label>
+              <input
+                type="text"
+                id="address"
+                placeholder="e.g., 123 Main Street"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="address-lane-or-house-number"
+                >Address Lane/House Number (Optional)</label
+              >
+              <input
+                type="text"
+                id="address-lane-or-house-number"
+                placeholder="e.g., Apt 4B, Building 10"
+              />
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" placeholder="Enter city" required />
+            </div>
+            <div class="form-group">
+              <label for="postal-code">Postal Code</label>
+              <input
+                type="text"
+                id="postal-code"
+                placeholder="Enter postal code"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input
+                type="text"
+                id="country"
+                placeholder="Enter country"
+                required
+              />
+            </div>
+
+            <h2 class="form-section-title">Delivery Preferences</h2>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="gift-wrapped" />
+              <label for="gift-wrapped">Gift Wrapped?</label>
+            </div>
+            <div class="form-group">
+              <label for="message-for-delivery"
+                >Message for Delivery (Optional)</label
+              >
+              <textarea
+                id="message-for-delivery"
+                rows="3"
+                placeholder="Any specific instructions or message"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              id="continue-to-payment-btn"
+              class="cta-button"
+            >
+              Continue to Payment
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Payment Page Section -->
+      <section id="payment-page" class="page">
+        <h1 class="page-title">Choose Payment Method</h1>
+        <div class="page-description">Select your preferred way to pay.</div>
+
+        <div class="form-card">
+          <form id="payment-method-form">
+            <h2 class="form-section-title">Payment Options</h2>
+            <div class="form-group radio-group">
+              <input
+                type="radio"
+                id="payment-upi"
+                name="payment-method"
+                value="UPI"
+                checked
+              />
+              <label for="payment-upi">UPI (Online Payment)</label>
+            </div>
+            <!-- Other payment methods can be added here, initially disabled -->
+            <div class="form-group radio-group disabled">
+              <input
+                type="radio"
+                id="payment-cod"
+                name="payment-method"
+                value="COD"
+                disabled
+              />
+              <label for="payment-cod">Cash on Delivery (Coming Soon)</label>
+            </div>
+
+            <button type="submit" id="proceed-to-upi-btn" class="cta-button">
+              Proceed to UPI Payment
+            </button>
+          </form>
+
+          <div id="upi-details-section" class="hidden">
+            <h2 class="form-section-title">Complete Your UPI Payment</h2>
+            <p class="page-description">
+              Scan the QR code or use the UPI ID below to pay.
+            </p>
+
+            <div class="upi-info-container">
+              <div class="upi-qr-code">
+                <!-- Placeholder for UPI QR Code. Replace with your actual QR code image URL. -->
+                <img src="images\myUPIqr.jpeg" alt="UPI QR Code" />
+                <p class="qr-label">Scan to Pay</p>
+              </div>
+              <div class="upi-text-details">
+                <p>
+                  <strong>UPI ID:</strong>
+                  <span id="display-upi-id">pratyushsinha2005@oksbi</span>
+                </p>
+                <p>
+                  <strong>Amount Payable:</strong>
+                  <span id="display-total-amount">₹0.00</span>
+                </p>
+                <p class="small-text">
+                  Note: UPI is the only payment method available right now.
+                </p>
+              </div>
+            </div>
+            <button id="payment-done-btn" class="cta-button">
+              I Have Paid
+            </button>
+            <button id="cancel-payment-btn" class="secondary-button">
+              Cancel Payment
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Order Confirmation Page Section -->
+      <section id="order-confirmation-page" class="page">
+        <h1 class="page-title">Order Confirmed!</h1>
+        <p class="page-description">Thank you for your purchase.</p>
+        <p>Your Order ID: <strong id="conf-order-id"></strong></p>
+        <p>Total Amount: <strong id="conf-total-amount"></strong></p>
+        <p>You will receive an email confirmation shortly.</p>
+
+        <a href="#home" class="cta-button">Continue Shopping</a>
+
+        <p class="ps">
+          If you don't receive confirmation email from Velvyna even after 2 days
+          of payment cantact us via email or instagram dm with proper proof
+        </p>
+      </section>
+
+      <!-- Admin Products Page Section -->
+      <section id="admin-products-page" class="page">
+        <h1 class="page-title">Admin: Product Management</h1>
+        <div class="page-description">Add, edit, or delete products.</div>
+
+        <!-- Add Product Form -->
+        <div class="admin-form-card">
+          <h2>Add New Product</h2>
+          <form id="add-product-form" class="admin-form">
+            <div class="form-group">
+              <label for="add-name">Product Name</label>
+              <input
+                type="text"
+                id="add-name"
+                placeholder="Enter product name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="add-price">Price (₹)</label>
+              <input
+                type="number"
+                id="add-price"
+                step="0.01"
+                min="0"
+                placeholder="Enter price"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="add-description">Description</label>
+              <textarea
+                id="add-description"
+                placeholder="Enter product description"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="add-image">Main Image URL</label>
+              <input
+                type="text"
+                id="add-image"
+                placeholder="Enter main image URL"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="add-additionalImages"
+                >Additional Images (Comma-separated URLs)</label
+              >
+              <textarea
+                id="add-additionalImages"
+                rows="4"
+                placeholder="Enter image URLs, separated by commas (e.g., /img/product-back.jpg, /img/product-side.jpg)"
+              ></textarea>
+              <small
+                >Example: `/images/products/product_back.jpg,
+                /images/products/product_side.jpg`</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="add-brand">Brand</label>
+              <input
+                type="text"
+                id="add-brand"
+                placeholder="Enter brand"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="add-category">Category</label>
+              <input
+                type="text"
+                id="add-category"
+                placeholder="Enter category"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="add-countInStock">Count In Stock</label>
+              <input
+                type="number"
+                id="add-countInStock"
+                min="0"
+                placeholder="Enter stock count"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="add-sizes"
+                >Sizes (comma-separated, e.g., S,M,L)</label
+              >
+              <input type="text" id="add-sizes" placeholder="Enter sizes" />
+            </div>
+            <div class="form-group">
+              <label for="add-colors"
+                >Colors (comma-separated, e.g., Red,Blue)</label
+              >
+              <input type="text" id="add-colors" placeholder="Enter colors" />
+            </div>
+            <div class="form-group">
+              <label for="add-colorImages"
+                >Color Specific Images (JSON format)</label
+              >
+              <textarea
+                id="add-colorImages"
+                rows="6"
+                placeholder='[{"color":"Red","imageUrl":"https://example.com/red.jpg"},{"color":"Blue","imageUrl":"https://example.com/blue.jpg"}]'
+              ></textarea>
+              <small
+                >E.g.,
+                `[{"color":"White","imageUrl":"/images/products/pi-tshirt-white.jpg"},
+                {"color":"Red","imageUrl":"/images/products/pi-tshirt-red.jpg"}]`</small
+              >
+            </div>
+
+            <button type="submit" class="cta-button">Add Product</button>
+          </form>
+        </div>
+
+        <hr class="section-divider" />
+
+        <!-- Product List for Admin -->
+        <div class="admin-product-list-container">
+          <h2>Existing Products</h2>
+          <input
+            type="text"
+            id="admin-product-search"
+            placeholder="Search products..."
+            class="full-width-input"
+          />
+          <div id="admin-product-list" class="products-grid">
+            <!-- Admin products will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Edit Product Modal/Form (Hidden by default) -->
+        <div id="edit-product-modal" class="modal hidden">
+          <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Edit Product</h2>
+            <form id="edit-product-form" class="admin-form">
+              <input type="hidden" id="edit-id" />
+              <div class="form-group">
+                <label for="edit-name">Product Name</label>
+                <input type="text" id="edit-name" required />
+              </div>
+              <div class="form-group">
+                <label for="edit-price">Price (₹)</label>
+                <input
+                  type="number"
+                  id="edit-price"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="edit-description">Description</label>
+                <textarea id="edit-description" rows="4" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="edit-image">Main Image URL</label>
+                <input type="text" id="edit-image" required />
+              </div>
+              <div class="form-group">
+                <label for="edit-additionalImages"
+                  >Additional Images (Comma-separated URLs)</label
+                >
+                <textarea
+                  id="edit-additionalImages"
+                  rows="4"
+                  placeholder="Enter image URLs, separated by commas (e.g., /img/product-back.jpg, /img/product-side.jpg)"
+                ></textarea>
+                <small
+                  >Example: `/images/products/product_back.jpg,
+                  /images/products/product_side.jpg`</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="edit-brand">Brand</label>
+                <input type="text" id="edit-brand" required />
+              </div>
+              <div class="form-group">
+                <label for="edit-category">Category</label>
+                <input type="text" id="edit-category" required />
+              </div>
+              <div class="form-group">
+                <label for="edit-countInStock">Count In Stock</label>
+                <input type="number" id="edit-countInStock" min="0" required />
+              </div>
+              <div class="form-group">
+                <label for="edit-sizes"
+                  >Sizes (comma-separated, e.g., S,M,L)</label
+                >
+                <input type="text" id="edit-sizes" placeholder="S,M,L" />
+              </div>
+              <div class="form-group">
+                <label for="edit-colors"
+                  >Colors (comma-separated, e.g., Red,Blue)</label
+                >
+                <input type="text" id="edit-colors" placeholder="Red,Blue" />
+              </div>
+              <div class="form-group">
+                <label>Color Specific Images (JSON format)</label>
+                <textarea
+                  id="edit-colorImages"
+                  rows="6"
+                  placeholder='[{"color":"Red","imageUrl":"https://example.com/red.jpg"},{"color":"Blue","imageUrl":"https://example.com/blue.jpg"}]'
+                ></textarea>
+                <small
+                  >E.g.,
+                  `[{"color":"White","imageUrl":"/images/products/pi-tshirt-white.jpg"},
+                  {"color":"Red","imageUrl":"/images/products/pi-tshirt-red.jpg"}]`</small
+                >
+              </div>
+              <button type="submit" class="cta-button">Save Changes</button>
+              <button type="button" class="secondary-button close-button">
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Admin Orders Page Section -->
+      <section id="admin-orders-page" class="page">
+        <h1 class="page-title">Admin: Order Management</h1>
+        <div class="page-description">View and manage all customer orders.</div>
+
+        <div class="admin-order-list-container">
+          <input
+            type="text"
+            id="admin-order-search"
+            placeholder="Search orders by ID, user, or status..."
+            class="full-width-input"
+          />
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Total</th>
+                  <th>Ordered At</th>
+                  <th>Payment Method</th>
+                  <th>Is Paid?</th>
+                  <th>Qikink Placed?</th>
+                  <th>Fulfilled?</th>
+                  <th>Is Delivered?</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-table-body">
+                <!-- Order rows will be loaded here by adminOrders.js -->
+                <tr>
+                  <td colspan="10" class="loading-message">
+                    Loading orders...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p id="no-orders-message" class="page-description hidden">
+            No orders found.
+          </p>
+        </div>
+
+        <!-- Order Detail Modal (Hidden by default) -->
+        <div id="order-detail-modal" class="modal hidden">
+          <div class="modal-content large-modal-content">
+            <span class="close-button">&times;</span>
+            <h2 class="modal-title">
+              Order Details: <span id="modal-order-id"></span>
+            </h2>
+            <div class="modal-body">
+              <div class="order-detail-section">
+                <h3>Customer Information</h3>
+                <p>
+                  <strong>Name:</strong> <span id="modal-customer-name"></span>
+                </p>
+                <p>
+                  <strong>Email:</strong>
+                  <span id="modal-customer-email"></span>
+                </p>
+                <p>
+                  <strong>Phone:</strong>
+                  <span id="modal-customer-phone"></span>
+                </p>
+              </div>
+
+              <div class="order-detail-section">
+                <h3>Shipping Address</h3>
+                <p id="modal-shipping-recipient"></p>
+                <p id="modal-shipping-address"></p>
+                <p id="modal-shipping-city-postal"></p>
+                <p id="modal-shipping-country"></p>
+              </div>
+
+              <div class="order-detail-section">
+                <h3>Order Items</h3>
+                <ul id="modal-order-items-list" class="order-items-list">
+                  <!-- Order items will be populated here -->
+                </ul>
+              </div>
+
+              <div class="order-detail-section order-financial-summary">
+                <h3>Financial Summary</h3>
+                <p>
+                  <strong>Items Total:</strong>
+                  <span id="modal-items-price"></span>
+                </p>
+                <p><strong>Tax:</strong> <span id="modal-tax-price"></span></p>
+                <p>
+                  <strong>Shipping:</strong>
+                  <span id="modal-shipping-price"></span>
+                </p>
+                <p class="total-price">
+                  <strong>Total Payable:</strong>
+                  <span id="modal-total-price"></span>
+                </p>
+                <p>
+                  <strong>Payment Method:</strong>
+                  <span id="modal-payment-method"></span>
+                </p>
+                <p>
+                  <strong>Gift Wrapped:</strong>
+                  <span id="modal-gift-wrapped"></span>
+                </p>
+                <p>
+                  <strong>Delivery Message:</strong>
+                  <span id="modal-delivery-message"></span>
+                </p>
+              </div>
+
+              <div class="order-detail-section admin-status-controls">
+                <h3>Admin Tracking</h3>
+                <div class="form-group checkbox-group">
+                  <input type="checkbox" id="admin-payment-confirmed" />
+                  <label for="admin-payment-confirmed"
+                    >Payment Confirmed by Admin</label
+                  >
+                </div>
+                <div class="form-group checkbox-group">
+                  <input type="checkbox" id="admin-qikink-placed" />
+                  <label for="admin-qikink-placed"
+                    >Order Placed with Qikink</label
+                  >
+                </div>
+                <div class="form-group checkbox-group">
+                  <input type="checkbox" id="admin-fulfillment-done" />
+                  <label for="admin-fulfillment-done">Fulfillment Done</label>
+                </div>
+                <div class="form-group checkbox-group">
+                  <input type="checkbox" id="admin-is-paid" />
+                  <label for="admin-is-paid"
+                    >Mark as Paid (Customer paid online)</label
+                  >
+                </div>
+                <div class="form-group checkbox-group">
+                  <input type="checkbox" id="admin-is-delivered" />
+                  <label for="admin-is-delivered">Mark as Delivered</label>
+                </div>
+                <button id="save-admin-order-status-btn" class="cta-button">
+                  Save Admin Status
+                </button>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="secondary-button close-button">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Contact Us Page Section (MODIFIED CONTENT) -->
+    <section id="contact-us-page" class="page">
+      <h1 class="page-title">Contact Velvyna</h1>
+      <div class="page-description">
+        We're here to help! Reach out to us through your preferred method.
+      </div>
+      <div class="info-card contact-info-card">
+        <p>
+          For any inquiries, support, or feedback, you can connect with us via:
+        </p>
+        <div class="contact-methods">
+          <p>
+            <i class="fas fa-envelope contact-icon"></i>
+            <strong>Email:</strong>
+            <a href="mailto:support@velvyna.com">velvynaofficial@gmail.com</a>
+          </p>
+          <p>
+            <i class="fas fa-phone contact-icon"></i>
+            <strong>Phone:</strong> +91 9749419552
+          </p>
+          <p>
+            <i class="fab fa-instagram contact-icon"></i>
+            <strong>Instagram:</strong>
+            <a
+              href="https://www.instagram.com/_velvyna__/?hl=en"
+              target="_blank"
+              >@_velvyna__</a
+            >
+          </p>
+          <p>
+            <i class="fab fa-facebook contact-icon"></i>
+            <strong>Facebook:</strong>
+            <a
+              href="https://www.facebook.com/your_velvyna_facebook"
+              target="_blank"
+              >Velvyna Official</a
+            >
+          </p>
+          <p class="instagram-dm-note">
+            For quick responses, feel free to send us a DM on Instagram!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy Policy Page Section -->
+    <section id="privacy-policy-page" class="page">
+      <h1 class="page-title">Privacy Policy</h1>
+      <div class="page-description">Your privacy is important to us.</div>
+      <div class="info-card policy-content">
+        <p>
+          This Privacy Policy describes how Velvyna collects, uses, and
+          discloses your Personal Information when you visit or make a purchase
+          from the Site.
+        </p>
+
+        <h2>Collection of Personal Information</h2>
+        <p>
+          When you visit the Site, we collect certain information about your
+          device, your interaction with the Site, and information necessary to
+          process your purchases. We may also collect additional information if
+          you contact us for customer support.
+        </p>
+        <p>
+          Examples of Personal Information collected: version of web browser, IP
+          address, time zone, cookie information, what sites or products you
+          view, search terms, and how you interact with the Site. Purpose of
+          collection: to load the Site accurately for you, and to perform
+          analytics on Site usage to optimize our Site. Source of collection:
+          Collected automatically when you access our Site using cookies, log
+          files, web beacons, tags, or pixels.
+        </p>
+
+        <h2>Sharing Personal Information</h2>
+        <p>
+          We share your Personal Information with service providers to help us
+          provide our services and fulfill our contracts with you, as described
+          above. For example: We use Qikink to power our online store—you can
+          read more about how Qikink uses your Personal Information here:
+          https://qikink.com/privacy-policy/. We may share your Personal
+          Information to comply with applicable laws and regulations, to respond
+          to a subpoena, search warrant or other lawful request for information
+          we receive, or to otherwise protect our rights.
+        </p>
+
+        <h2>Your Rights</h2>
+        <p>
+          If you are a resident of the EEA, you have the right to access
+          Personal Information we hold about you, to port it to a new service,
+          and to ask that your Personal Information be corrected, updated, or
+          erased. If you would like to exercise this right, please contact us
+          through the contact information below.
+        </p>
+        <p>
+          Your Personal Information will be initially processed in Ireland and
+          then will be transferred outside of Europe for storage and further
+          processing, including to Canada and the United States.
+        </p>
+      </div>
+    </section>
+
+    <!-- Refund Policy Page Section -->
+    <section id="refund-policy-page" class="page">
+      <h1 class="page-title">Refund Policy</h1>
+      <div class="page-description">Our policy on returns and refunds.</div>
+      <div class="info-card policy-content">
+        <p>
+          Our refund and returns policy lasts 30 days. If 30 days have passed
+          since your purchase, we can’t offer you a full refund or exchange.
+        </p>
+        <p>
+          To be eligible for a return, your item must be unused and in the same
+          condition that you received it. It must also be in the original
+          packaging.
+        </p>
+        <p>
+          Several types of goods are exempt from being returned. Perishable
+          goods such as food, flowers, newspapers or magazines cannot be
+          returned. We also do not accept products that are intimate or sanitary
+          goods, hazardous materials, or flammable liquids or gases.
+        </p>
+
+        <h3>Refunds</h3>
+        <p>
+          Once your return is received and inspected, we will send you an email
+          to notify you that we have received your returned item. We will also
+          notify you of the approval or rejection of your refund. If you are
+          approved, then your refund will be processed, and a credit will
+          automatically be applied to your credit card or original method of
+          payment, within a certain amount of days.
+        </p>
+
+        <h3>Exchanges</h3>
+        <p>
+          We only replace items if they are defective or damaged. If you need to
+          exchange it for the same item, send us an email at
+          velvynaofficial@gmail.com
+        </p>
+
+        <h3>Shipping Returns</h3>
+        <p>
+          You will be responsible for paying for your own shipping costs for
+          returning your item. Shipping costs are non-refundable. If you receive
+          a refund, the cost of return shipping will be deducted from your
+          refund.
+        </p>
+        <p>
+          Depending on where you live, the time it may take for your exchanged
+          product to reach you may vary.
+        </p>
+        <p>
+          If you are returning more expensive items, you may consider using a
+          trackable shipping service or purchasing shipping insurance. We don’t
+          guarantee that we will receive your returned item.
+        </p>
+      </div>
+    </section>
+
+    <!-- Shipping Policy Page Section -->
+    <section id="shipping-policy-page" class="page">
+      <h1 class="page-title">Shipping Policy</h1>
+      <div class="page-description">
+        Information regarding our shipping process.
+      </div>
+      <div class="info-card policy-content">
+        <p>
+          All orders are processed within 1-2 business days. Orders are not
+          shipped or delivered on weekends or holidays.
+        </p>
+        <p>
+          If we are experiencing a high volume of orders, shipments may be
+          delayed by a few days. Please allow additional days in transit for
+          delivery. If there will be a significant delay in shipment of your
+          order, we will contact you via email or telephone.
+        </p>
+
+        <h3>Shipping Rates & Delivery Estimates</h3>
+        <p>
+          Shipping charges for your order will be calculated and displayed at
+          checkout.
+        </p>
+        <ul>
+          <li>
+            <strong>Standard Shipping:</strong> 5-7 business days. ₹100 (Free
+            for orders over ₹1000)
+          </li>
+          <li><strong>Express Shipping:</strong> 2-3 business days. ₹250</li>
+        </ul>
+        <p>Delivery delays can occasionally occur.</p>
+
+        <h3>Shipment Confirmation & Order Tracking</h3>
+        <p>
+          You will receive a Shipment Confirmation email once your order has
+          shipped containing your tracking number(s). The tracking number will
+          be active within 24 hours.
+        </p>
+
+        <h3>Customs, Duties, and Taxes</h3>
+        <p>
+          Velvyna is not responsible for any customs and taxes applied to your
+          order. All fees imposed during or after shipping are the
+          responsibility of the customer (tariffs, taxes, etc.).
+        </p>
+
+        <h3>Damages</h3>
+        <p>
+          Velvyna is not liable for any products damaged or lost during
+          shipping. If you received your order damaged, please contact the
+          shipment carrier to file a claim. Please save all packaging materials
+          and damaged goods before filing a claim.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER (MODIFIED CONTENT & STRUCTURE) -->
+    <footer class="main-footer">
+      <div class="container footer-content">
+        <div class="footer-section about-us">
+          <h3>About Velvyna</h3>
+          <p>
+            Your one-stop shop for trendy fashion and curated home decor. We
+            believe in style, quality, and customer satisfaction.
+          </p>
+        </div>
+        <div class="footer-section quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#cart">Cart</a></li>
+            <li><a href="#profile">Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-section policies">
+          <h3>Policies</h3>
+          <ul>
+            <li><a href="#privacy-policy">Privacy Policy</a></li>
+            <li><a href="#refund-policy">Refund Policy</a></li>
+            <li><a href="#shipping-policy">Shipping Policy</a></li>
+            <li><a href="#contact-us">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section social-contact">
+          <h3>Get In Touch</h3>
+          <p>
+            For inquiries, you can reach us via email or connect on social
+            media.
+          </p>
+          <ul class="social-links">
+            <li>
+              <a
+                href="mailto:velvynaofficial@gmail.com?subject=Customer%20Inquiry&body=Hello,%20I%20would%20like%20to%20ask%20about..."
+              >
+                <i class="fas fa-envelope"></i> velvynaofficial@gmail.com
+              </a>
+            </li>
+
+            <li>
+              <a href="tel:+91 9434651756"
+                ><i class="fas fa-phone"></i>+91 9749419552</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/_velvyna__/?hl=en"
+                target="_blank"
+                ><i class="fab fa-instagram"></i> Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/your_velvyna_facebook"
+                target="_blank"
+                ><i class="fab fa-facebook-f"></i> Facebook</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Velvyna. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- GLOBAL MESSAGE BOX (FIXED POSITIONING) -->
+    <div id="message-box" class="message-box hidden">
+      <span id="message-text"></span>
+      <button id="message-close-button">OK</button>
+    </div>
+
+    <!-- MAIN APP SCRIPT -->
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
