@@ -1,6 +1,7 @@
 // frontend/public/js/utils/api.js
 
-const API_BASE_URL = ""; //http://localhost:5000"; // Ensure this matches your backend URL
+const API_BASE = "https://velvyna-backend.onrender.com";
+// Ensure this matches your backend URL //"";
 
 let messageCloseListenerAdded = false; // Flag to ensure message close listener is added only once
 

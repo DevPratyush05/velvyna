@@ -54,3 +54,13 @@ app.listen(
     } mode on port ${PORT}`
   )
 );
+
+if (process.env.RENDER) {
+  setInterval(() => {
+    fetch("https://velvyna-backend.onrender.com")
+      .then((res) =>
+        console.log("Self-ping OK at", new Date().toLocaleTimeString())
+      )
+      .catch((err) => console.error("Self-ping failed", err));
+  }, 20 * 60 * 1000); // every 20 minutes
+}

@@ -21,7 +21,7 @@
           style="display: flex; align-items: center; text-decoration: none"
         >
           <img
-            src="images\logoFinal.png"
+            src="images/logoFinal.png"
             alt="Velvyna Logo"
             style="height: 90px; margin-top: -15px; margin-bottom: -15px"
           />
@@ -35,7 +35,10 @@
             >Velvyna</span
           >
         </a>
-        <!-- <a href="#home" class="logo">Velvyna</a> -->
+
+        <!-- HAMBURGER BUTTON for mobile -->
+        <button class="hamburger" aria-label="Toggle Menu">&#9776;</button>
+
         <nav class="main-nav">
           <ul>
             <li><a href="#home">Home</a></li>
@@ -44,14 +47,12 @@
             <li class="profile-link hidden">
               <a href="#profile">👤 Profile</a>
             </li>
-            <!-- IMPORTANT: Ensure these two admin links have the 'admin-link hidden' classes -->
             <li class="admin-link hidden">
               <a href="#admin-products">⚙️ Admin Products</a>
             </li>
             <li class="admin-link hidden">
               <a href="#admin-orders">📦 Admin Orders</a>
             </li>
-            <!-- Info dropdown container -->
             <li class="dropdown">
               <a href="#" class="dropbtn">Info ▼</a>
               <div class="dropdown-content">
@@ -84,6 +85,15 @@
             Discover the latest trends in fashion and home decor.
           </p>
         </div>
+        <!-- Mockup / Advertisement Slider
+        <div class="mockup-slider">
+          <div class="slides">
+            <img src="images\mockups\1.jpeg" alt="Mockup 1" />
+            <img src="images\mockups\2.jpeg" alt="Mockup 2" />
+            <img src="images\mockups\3.jpeg" alt="Mockup 3" />
+          </div>
+        </div> -->
+
         <div id="featured-products-section">
           <h2>Featured Products</h2>
           <div id="featured-products-container" class="products-grid">
@@ -99,6 +109,12 @@
           Find the perfect items for your style.
         </div>
         <div class="products-page-layout">
+          <!-- Filters Toggle Button (Visible on Mobile) -->
+          <!--filter change start-->
+          <button class="filters-toggle" aria-expanded="false">
+            Show Filters
+          </button>
+
           <aside id="filters" class="filters-sidebar">
             <div class="filter-group">
               <label for="category-filter">Category</label>
@@ -126,6 +142,24 @@
               />
             </div>
           </aside>
+          <!--filter change end-->
+
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const toggleBtn = document.querySelector(".filters-toggle");
+              const sidebar = document.querySelector(".filters-sidebar");
+
+              if (toggleBtn && sidebar) {
+                toggleBtn.addEventListener("click", function () {
+                  const isActive = sidebar.classList.toggle("active");
+                  toggleBtn.textContent = isActive
+                    ? "Hide Filters"
+                    : "Show Filters";
+                  toggleBtn.setAttribute("aria-expanded", isActive);
+                });
+              }
+            });
+          </script>
           <main id="product-list" class="products-grid">
             <!-- Products loaded by products.js -->
           </main>
@@ -1153,7 +1187,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Velvyna. All rights reserved.</p>
+        <p>&copy; 2025 Velvyna. All rights reserved.</p>
       </div>
     </footer>
 
@@ -1165,5 +1199,17 @@
 
     <!-- MAIN APP SCRIPT -->
     <script type="module" src="./js/app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".main-nav");
+
+        if (hamburger && navMenu) {
+          hamburger.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+          });
+        }
+      });
+    </script>
   </body>
 </html>
